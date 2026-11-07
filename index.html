@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1117" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Laadkosten" />
+  <title>Laadkosten Calculator</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="header-inner">
+        <h1>⚡ Laadkosten</h1>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- Wagen -->
+      <section class="card">
+        <div class="card-title">Wagen</div>
+        <select id="car_select" class="input-select"></select>
+        <div id="car_specs_bar" class="specs-bar"></div>
+        <div id="curve_chart" class="curve-chart"></div>
+        <div id="saved_car_actions" class="hidden">
+          <button class="btn-delete-car" id="delete_car_btn">✕ Verwijder wagen</button>
+        </div>
+        <div id="custom_fields" class="custom-fields hidden">
+          <div class="field">
+            <label>Naam wagen</label>
+            <input type="text" id="c_name" placeholder="bv. Mijn Tesla" />
+          </div>
+          <div class="row-3">
+            <div class="field">
+              <label>Capaciteit (kWh)</label>
+              <input type="number" id="c_cap" inputmode="decimal" placeholder="75" />
+            </div>
+            <div class="field">
+              <label>Max AC (kW)</label>
+              <input type="number" id="c_ac" inputmode="decimal" placeholder="11" />
+            </div>
+            <div class="field">
+              <label>Max DC (kW)</label>
+              <input type="number" id="c_dc" inputmode="decimal" placeholder="150" />
+            </div>
+          </div>
+          <div class="field">
+            <label>WLTP bereik (km)</label>
+            <input type="number" id="c_range" inputmode="decimal" placeholder="optioneel" />
+          </div>
+          <button class="btn-save-car" id="save_car_btn">Bewaar wagen</button>
+        </div>
+      </section>
+
+      <!-- Batterij -->
+      <section class="card">
+        <div class="card-title">Batterij</div>
+        <div class="pct-inputs">
+          <div class="field flex-1">
+            <label>Huidig %</label>
+            <input type="number" id="current_pct" inputmode="decimal" placeholder="20" min="0" max="100" />
+          </div>
+          <div class="pct-arrow">→</div>
+          <div class="field flex-1">
+            <label>Doel %</label>
+            <input type="number" id="target_pct" inputmode="decimal" placeholder="80" min="0" max="100" />
+          </div>
+        </div>
+        <div id="kwh_badge" class="kwh-badge"></div>
+        <div id="range_badge" class="range-badge"></div>
+      </section>
+
+      <!-- Laadpalen -->
+      <div id="chargers"></div>
+
+      <button id="add_btn" class="btn-add">+ Laadpaal toevoegen</button>
+
+      <!-- Vergelijking -->
+      <section id="compare_section" class="card hidden">
+        <div class="card-title">Vergelijking</div>
+        <div id="compare_body"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
