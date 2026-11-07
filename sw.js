@@ -1,4 +1,4 @@
-const CACHE = 'laadkosten-v6';
+const CACHE = 'laadkosten-v7';
 const ASSETS = [
   './',
   './index.html',
