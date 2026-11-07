@@ -5,7 +5,7 @@
 const CARS = [
   {
     id: 'tesla-m3-sr', name: 'Tesla Model 3 Highland Standard Range',
-    capacity: 57.5, maxAC: 7.2, maxDC: 170, wltpRange: 513,
+    capacity: 57.5, maxAC: 11, maxDC: 170, wltpRange: 513,
     dcCurve: [
       [2,148],[5,162],[10,170],[20,170],[30,162],[40,148],[50,130],
       [60,108],[70,82],[75,62],[78,50],[80,42],[85,32],[90,24],[95,16],[100,10]
